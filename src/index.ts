@@ -1,9 +1,17 @@
 import express from 'express';
+import userRoutes from './routes/userRoutes';
+import tweetRoutes from './routes/tweetRoutes';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const app = express();
+app.use(express.json());
+app.use('/user', userRoutes);
+app.use('/tweet', tweetRoutes);
 
-const trial = 'lka';
+app.get('/', (_req, res) => {
+  res.send('Hello there again');
+});
 
-// eslint-disable-next-line no-console
-console.log(trial);
+app.listen(4500, () => {
+  // eslint-disable-next-line no-console
+  console.log('Server is running..');
+});
